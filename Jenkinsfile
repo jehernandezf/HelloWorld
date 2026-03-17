@@ -12,12 +12,12 @@ pipeline {
         }
         stage('Construir Imagen Docker') {
             steps {
-                sh 'docker build -t hola-jar .'
+                sh 'docker build -t docker-java-jar .'
             }
         }
         stage('Pruebas') {
             steps {
-                sh 'docker run --rm hola-jar'
+                sh 'docker run --rm docker-java-jar'
             }
         }
     }
