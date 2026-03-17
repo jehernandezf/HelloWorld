@@ -3,8 +3,11 @@ pipeline {
     stages {
         stage('Compilar') {
             steps {
-                sh 'javac HelloWorld.java'
-                sh 'jar cfe HelloWorld.jar HelloWorld HelloWorld.class'
+                // Entramos a la carpeta src y compilamos la clase
+                sh 'javac src/mx/com/saludo/HelloWorld.java -d build'
+                
+                // Creamos el JAR a partir de la clase compilada
+                sh 'jar cfe build/HelloWorld.jar mx.com.saludo.HelloWorld -C build .'
             }
         }
         stage('Construir Imagen Docker') {
