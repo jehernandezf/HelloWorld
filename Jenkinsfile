@@ -1,6 +1,12 @@
 pipeline {
     agent any
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/jehernandezf/HelloWorld.git'
+            }
+        }
         stage('Compilar') {
             steps {
                 // Entramos a la carpeta src y compilamos la clase
